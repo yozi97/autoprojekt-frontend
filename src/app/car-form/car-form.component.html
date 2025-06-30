@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()">
+  <label>Marka:
+    <input type="text" [(ngModel)]="brand" name="brand" required>
+  </label><br>
+  <label>Model:
+    <input type="text" [(ngModel)]="model" name="model" required>
+  </label><br>
+  <label>Godina:
+    <input type="number" [(ngModel)]="year" name="year" required>
+  </label><br>
+  <label>Cijena:
+    <input type="number" [(ngModel)]="price" name="price" required>
+  </label><br>
+  <label>Opis:
+    <textarea [(ngModel)]="description" name="description"></textarea>
+  </label><br>
+  <button type="submit">Dodaj Auto</button>
+</form>
