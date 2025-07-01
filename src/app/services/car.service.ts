@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 export interface Car {
   id?: number;
@@ -25,9 +26,19 @@ export class CarService {
     return this.http.get<Car[]>(this.apiUrl);
   }
 
-  addCar(car: Car): Observable<Car> {
-    return this.http.post<Car>(this.apiUrl, car);
-  }
+addCar(car: Car): Observable<any> {
+  const formData = new FormData();
+  formData.append('data', JSON.stringify(car));
+
+  const token = localStorage.getItem('token');  // ili gdje god ti čuvaš token
+
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.post(this.apiUrl, formData, { headers });
+}
+
 
   deleteCar(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
