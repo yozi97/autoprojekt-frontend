@@ -1,0 +1,22 @@
+<h2>Dodaj novi auto</h2>
+<form (ngSubmit)="onSubmit()">
+  <label>Marka:</label>
+  <input type="text" [(ngModel)]="car.marka" name="marka" required><br>
+
+  <label>Model:</label>
+  <input type="text" [(ngModel)]="car.model" name="model" required><br>
+
+  <label>Godište:</label>
+  <input type="number" [(ngModel)]="car.godiste" name="godiste" required><br>
+
+  <label>Cijena:</label>
+  <input type="number" [(ngModel)]="car.cijena" name="cijena" required><br>
+
+  <label>Opis:</label>
+  <textarea [(ngModel)]="car.opis" name="opis"></textarea><br>
+
+  <label>Slika (URL):</label>
+  <input type="text" [(ngModel)]="car.slikaUrl" name="slikaUrl"><br>
+
+  <button type="submit">Dodaj auto</button>
+</form>

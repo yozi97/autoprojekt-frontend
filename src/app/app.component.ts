@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AddCarComponent } from './components/add-car.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  template: `<h1>Dobrodošli u AutoProjekt!</h1>`,
+  imports: [RouterModule, AddCarComponent],
+  templateUrl: './app.component.html',
 })
 export class AppComponent {}
