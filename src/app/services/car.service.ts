@@ -27,17 +27,9 @@ export class CarService {
   }
 
 addCar(car: Car): Observable<any> {
-  const formData = new FormData();
-  formData.append('data', JSON.stringify(car));
-
-  const token = localStorage.getItem('token');  // ili gdje god ti čuvaš token
-
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  });
-
-  return this.http.post(this.apiUrl, formData, { headers });
+  return this.http.post(this.apiUrl, car);
 }
+
 
 
   deleteCar(id: number): Observable<void> {

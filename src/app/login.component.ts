@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,4 +21,14 @@ export class LoginComponent {
   onLogin() {
     console.log('Login with', this.username, this.password);
   }
+
+ constructor(private authService: AuthService) {}
+
+  onSubmit() {
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => console.log('Uspješan login, token spremljen'),
+      error: err => console.error('Login neuspješan', err)
+    });
+  }
 }
+
