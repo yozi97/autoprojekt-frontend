@@ -11,10 +11,12 @@ import { CarService, Car } from '../services/car.service';
   styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent {
+  currentYear = new Date().getFullYear();  // <--- ovo dodaj
+
   car: Car = {
     marka: '',
     model: '',
-    godiste: new Date().getFullYear(),
+    godiste: this.currentYear,  // možeš koristiti ovdje
     cijena: 0,
     opis: '',
     slikaUrl: ''
@@ -26,7 +28,14 @@ export class AddCarComponent {
     this.carService.addCar(this.car).subscribe({
       next: (res) => {
         console.log('Auto dodan:', res);
-        this.car = { marka: '', model: '', godiste: new Date().getFullYear(), cijena: 0, opis: '', slikaUrl: '' };
+        this.car = {
+          marka: '',
+          model: '',
+          godiste: this.currentYear,
+          cijena: 0,
+          opis: '',
+          slikaUrl: ''
+        };
       },
       error: (err) => {
         console.error('Greška pri dodavanju auta:', err);
@@ -34,3 +43,5 @@ export class AddCarComponent {
     });
   }
 }
+
+

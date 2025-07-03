@@ -1,0 +1,30 @@
+<div class="max-w-4xl mx-auto mt-10 p-4">
+  <h2 class="text-2xl font-semibold mb-4">Lista Automobila</h2>
+
+  <div *ngIf="loading" class="text-center py-10">Učitavanje...</div>
+  <div *ngIf="error" class="text-red-600">{{ error }}</div>
+
+  <div *ngIf="!loading && cars.length === 0" class="text-center py-10 text-gray-600">
+    Nema dostupnih automobila.
+  </div>
+
+  <ul *ngIf="cars.length > 0" class="space-y-4">
+    <li *ngFor="let car of cars" class="border p-4 rounded shadow flex items-center space-x-4">
+      <img
+        *ngIf="car.slikaUrl"
+        [src]="car.slikaUrl"
+        alt="{{ car.marka }} {{ car.model }}"
+        class="w-24 h-16 object-cover rounded"
+      />
+      <div class="flex-1">
+        <h3 class="text-lg font-bold">{{ car.marka }} {{ car.model }}</h3>
+        <p>Godina: {{ car.godiste }}</p>
+        <p>Cijena: {{ car.cijena | number }} KM</p>
+      </div>
+      <div>
+        <button class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded mr-2">Uredi</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Obriši</button>
+      </div>
+    </li>
+  </ul>
+</div>

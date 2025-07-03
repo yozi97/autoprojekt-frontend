@@ -1,0 +1,81 @@
+/* Container za listu */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Svaki item u listi */
+li {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0; /* svijetlo siva */
+  border-radius: 0.5rem; /* 8px */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Slika automobila */
+img {
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 0.375rem; /* 6px */
+  flex-shrink: 0;
+}
+
+/* Podaci o autu */
+div.flex-1 {
+  flex-grow: 1;
+}
+
+/* Naslov auta */
+h3 {
+  margin: 0;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 700;
+  color: #1a202c; /* tamno siva */
+}
+
+/* Opis, godina, cijena */
+p {
+  margin: 0.25rem 0 0 0;
+  color: #4a5568; /* srednje siva */
+  font-size: 0.875rem; /* 14px */
+}
+
+/* Dugmad */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0.375rem 0.75rem; /* 6px 12px */
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease;
+}
+
+button.bg-yellow-400 {
+  background-color: #f6e05e;
+  color: #1a202c;
+}
+
+button.bg-yellow-400:hover {
+  background-color: #ecc94b;
+}
+
+button.bg-red-500 {
+  background-color: #f56565;
+  color: #ffffff;
+}
+
+button.bg-red-500:hover {
+  background-color: #e53e3e;
+}

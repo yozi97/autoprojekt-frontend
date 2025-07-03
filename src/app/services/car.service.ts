@@ -22,9 +22,9 @@ export class CarService {
 
   constructor(private http: HttpClient) {}
 
-  getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.apiUrl);
-  }
+  getCars() {
+  return this.http.get<Car[]>('/api/cars');
+}
 
 addCar(car: Car): Observable<any> {
   return this.http.post(this.apiUrl, car);
