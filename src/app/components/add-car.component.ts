@@ -11,6 +11,10 @@ import { CarService, Car } from '../services/car.service';
   styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent {
+
+  feedbackMessage: string = '';
+  feedbackType: 'success' | 'error' = 'success';
+
   currentYear = new Date().getFullYear();  // <--- ovo dodaj
 
   car: Car = {
@@ -43,5 +47,3 @@ export class AddCarComponent {
     });
   }
 }
-
-

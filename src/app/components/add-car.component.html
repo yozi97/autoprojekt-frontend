@@ -1,106 +1,120 @@
-<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-  <h2 class="text-2xl font-semibold mb-6 text-center">Dodaj Novi Auto</h2>
+<div class="form-container">
+  <h1>Dobrodošli u AutoProjekt!</h1>
+  <h2>Dodaj Novi Auto</h2>
 
-  <form (ngSubmit)="onSubmit()" #carForm="ngForm" novalidate>
-    <div class="mb-4">
-      <label for="marka" class="block mb-1 font-medium">Marka</label>
-      <input
-        id="marka"
-        name="marka"
-        [(ngModel)]="car.marka"
-        required
-        #marka="ngModel"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Unesite marku auta"
-      />
-      <div *ngIf="marka.invalid && marka.touched" class="text-red-600 text-sm mt-1">
-        Marka je obavezna.
-      </div>
+  <form #carForm="ngForm" (ngSubmit)="onSubmit(carForm)">
+  <!-- Marka -->
+  <div class="form-group">
+    <label for="marka">Marka</label>
+    <input
+      id="marka"
+      type="text"
+      [(ngModel)]="car.marka"
+      name="marka"
+      #marka="ngModel"
+      placeholder="Unesite marku auta"
+      required
+    />
+    <div class="error" *ngIf="marka.invalid && marka.touched">
+      * Ovo polje je obavezno
     </div>
+  </div>
 
-    <div class="mb-4">
-      <label for="model" class="block mb-1 font-medium">Model</label>
-      <input
-        id="model"
-        name="model"
-        [(ngModel)]="car.model"
-        required
-        #model="ngModel"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Unesite model auta"
-      />
-      <div *ngIf="model.invalid && model.touched" class="text-red-600 text-sm mt-1">
-        Model je obavezan.
-      </div>
+  <!-- Model -->
+  <div class="form-group">
+    <label for="model">Model</label>
+    <input
+      id="model"
+      type="text"
+      [(ngModel)]="car.model"
+      name="model"
+      #model="ngModel"
+      placeholder="Unesite model auta"
+      required
+    />
+    <div class="error" *ngIf="model.invalid && model.touched">
+      * Ovo polje je obavezno
     </div>
+  </div>
 
-    <div class="mb-4">
-      <label for="godiste" class="block mb-1 font-medium">Godina</label>
-      <input
-        id="godiste"
-        name="godiste"
-        type="number"
-        [(ngModel)]="car.godiste"
-        required
-        min="1900"
-        max="{{ currentYear }}"
-        #godiste="ngModel"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Unesite godinu proizvodnje"
-      />
-      <div *ngIf="godiste.invalid && godiste.touched" class="text-red-600 text-sm mt-1">
-        Godina mora biti između 1900 i {{ currentYear }}.
-      </div>
+  <!-- Godina -->
+  <div class="form-group">
+    <label for="godiste">Godina</label>
+    <input
+      id="godiste"
+      type="number"
+      [(ngModel)]="car.godiste"
+      name="godiste"
+      #godiste="ngModel"
+      placeholder="2024"
+      required
+      min="1900"
+      max="{{ currentYear }}"
+    />
+    <div class="error" *ngIf="godiste.invalid && godiste.touched">
+      <span *ngIf="godiste.errors?.required">* Polje je obavezno</span>
+      <span *ngIf="godiste.errors?.min || godiste.errors?.max">
+        * Unesite godinu između 1900 i {{ currentYear }}
+      </span>
     </div>
+  </div>
 
-    <div class="mb-4">
-      <label for="cijena" class="block mb-1 font-medium">Cijena (KM)</label>
-      <input
-        id="cijena"
-        name="cijena"
-        type="number"
-        [(ngModel)]="car.cijena"
-        required
-        min="0"
-        #cijena="ngModel"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Unesite cijenu"
-      />
-      <div *ngIf="cijena.invalid && cijena.touched" class="text-red-600 text-sm mt-1">
-        Cijena mora biti pozitivna.
-      </div>
+  <!-- Cijena -->
+  <div class="form-group">
+    <label for="cijena">Cijena (KM)</label>
+    <input
+      id="cijena"
+      type="number"
+      [(ngModel)]="car.cijena"
+      name="cijena"
+      #cijena="ngModel"
+      required
+      min="1"
+    />
+    <div class="error" *ngIf="cijena.invalid && cijena.touched">
+      <span *ngIf="cijena.errors?.required">* Polje je obavezno</span>
+      <span *ngIf="cijena.errors?.min">* Cijena mora biti veća od 0</span>
     </div>
+  </div>
 
-    <div class="mb-4">
-      <label for="opis" class="block mb-1 font-medium">Opis</label>
-      <textarea
-        id="opis"
-        name="opis"
-        [(ngModel)]="car.opis"
-        rows="3"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Dodatne informacije o autu"
-      ></textarea>
+  <!-- Opis -->
+  <div class="form-group">
+    <label for="opis">Opis</label>
+    <textarea
+      id="opis"
+      [(ngModel)]="car.opis"
+      name="opis"
+      rows="4"
+      placeholder="Dodatne informacije o autu"
+    ></textarea>
+  </div>
+
+  <!-- URL slike -->
+  <div class="form-group">
+    <label for="slikaUrl">URL slike</label>
+    <input
+      id="slikaUrl"
+      type="url"
+      [(ngModel)]="car.slikaUrl"
+      name="slikaUrl"
+      #slikaUrl="ngModel"
+      placeholder="https://"
+      required
+    />
+    <div class="error" *ngIf="slikaUrl.invalid && slikaUrl.touched">
+      <span *ngIf="slikaUrl.errors?.required">* Polje je obavezno</span>
+      <span *ngIf="slikaUrl.errors?.pattern || slikaUrl.errors?.url">
+        * Unesite validan URL
+      </span>
     </div>
+  </div>
 
-    <div class="mb-6">
-      <label for="slikaUrl" class="block mb-1 font-medium">URL slike</label>
-      <input
-        id="slikaUrl"
-        name="slikaUrl"
-        [(ngModel)]="car.slikaUrl"
-        type="url"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Unesite URL slike (npr. https://...)"
-      />
-    </div>
+  <button type="submit" [disabled]="carForm.invalid">Dodaj Auto</button>
+</form>
 
-    <button
-      type="submit"
-      [disabled]="carForm.invalid"
-      class="w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition"
-    >
-      Dodaj Auto
-    </button>
-  </form>
+<div *ngIf="feedbackMessage" class="feedback" [ngClass]="feedbackType">
+  {{ feedbackMessage }}
+</div>
+
+
 </div>
