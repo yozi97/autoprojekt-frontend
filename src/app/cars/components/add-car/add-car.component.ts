@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CarService, Car } from '../services/car.service';
+import { CarService, Car } from '../../services/car.service';
 
 @Component({
   selector: 'app-add-car',

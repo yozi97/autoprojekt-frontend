@@ -2,7 +2,7 @@
   <h1>Dobrodošli u AutoProjekt!</h1>
   <h2>Dodaj Novi Auto</h2>
 
-  <form #carForm="ngForm" (ngSubmit)="onSubmit(carForm)">
+  <form #carForm="ngForm" (ngSubmit)="onSubmit()">
   <!-- Marka -->
   <div class="form-group">
     <label for="marka">Marka</label>
@@ -52,8 +52,8 @@
       max="{{ currentYear }}"
     />
     <div class="error" *ngIf="godiste.invalid && godiste.touched">
-      <span *ngIf="godiste.errors?.required">* Polje je obavezno</span>
-      <span *ngIf="godiste.errors?.min || godiste.errors?.max">
+      <span *ngIf="godiste.errors?.['required']">* Polje je obavezno</span>
+      <span *ngIf="godiste.errors?.['min'] || godiste.errors?.['max']">
         * Unesite godinu između 1900 i {{ currentYear }}
       </span>
     </div>
@@ -72,8 +72,8 @@
       min="1"
     />
     <div class="error" *ngIf="cijena.invalid && cijena.touched">
-      <span *ngIf="cijena.errors?.required">* Polje je obavezno</span>
-      <span *ngIf="cijena.errors?.min">* Cijena mora biti veća od 0</span>
+      <span *ngIf="cijena.errors?.['required']">* Polje je obavezno</span>
+      <span *ngIf="cijena.errors?.['min']">* Cijena mora biti veća od 0</span>
     </div>
   </div>
 
@@ -102,8 +102,8 @@
       required
     />
     <div class="error" *ngIf="slikaUrl.invalid && slikaUrl.touched">
-      <span *ngIf="slikaUrl.errors?.required">* Polje je obavezno</span>
-      <span *ngIf="slikaUrl.errors?.pattern || slikaUrl.errors?.url">
+      <span *ngIf="slikaUrl.errors?.['required']">* Polje je obavezno</span>
+      <span *ngIf="slikaUrl.errors?.['pattern'] || slikaUrl.errors?.['url']">
         * Unesite validan URL
       </span>
     </div>

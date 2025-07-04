@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarService, Car } from '../services/car.service';
+import { CarService, Car } from '../../services/car.service';
 
 @Component({
   selector: 'app-car-list',
